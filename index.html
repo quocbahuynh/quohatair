@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>Quohat Air - Website kiểm tra ô nhiễm không khí </title>
+    <meta name="title" content="Quohat Air - Website kiểm tra ô nhiễm không khí ">
+    <meta name="description" content="Công cụ kiểm tra chất lượng không khí tại ví trí hiện tại của bạn | Quohat Team">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quohatair.glitch.me/">
+    <meta property="og:title" content="Quohat Air - Website kiểm tra ô nhiễm không khí ">
+    <meta property="og:description" content="Công cụ kiểm tra chất lượng không khí tại ví trí hiện tại của bạn | Quohat Team">
+    <meta property="og:image" content="https://cdn.glitch.com/762947c0-937e-4060-8f91-7c6c22c0113f%2Fair.png?v=1611207583160">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://quohatair.glitch.me/">
+    <meta property="twitter:title" content="Quohat Air - Website kiểm tra ô nhiễm không khí ">
+    <meta property="twitter:description" content="Công cụ kiểm tra chất lượng không khí tại ví trí hiện tại của bạn | Quohat Team">
+    <meta property="twitter:image" content="hhttps://cdn.glitch.com/762947c0-937e-4060-8f91-7c6c22c0113f%2Fair.png?v=1611207583160">
+    <link rel="icon" href="https://cdn.glitch.com/762947c0-937e-4060-8f91-7c6c22c0113f%2Fcloud.svg?v=1611206719154" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+      *,
+      *:before,
+      *:after {
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
+      }
+
+      ::-webkit-input-placeholder {
+        color: #56585b;
+      }
+
+      ::-moz-placeholder {
+        color: #56585b;
+      }
+
+      :-moz-placeholder {
+        color: #56585b;
+      }
+
+      html {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        background-color: #fff;
+        color: #0a0a0b;
+        font-family: "Nunito", sans-serif;
+      }
+
+      ul,
+      nav {
+        list-style: none;
+        padding: 0;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0.9;
+      }
+
+      a:hover {
+        opacity: 1;
+      }
+
+      h1 {
+        font-size: 5rem;
+        font-weight: 700;
+        color: #0a0a0b;
+        margin: 0 0 1.5rem;
+      }
+
+      i {
+        font-size: 1.3rem;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        padding: 1px 100px 0;
+        background-color: #b12830;
+      }
+
+      header nav ul {
+        display: flex;
+      }
+
+      header nav li {
+        margin: 0 15px;
+      }
+
+      header nav li:first-child {
+        margin-left: 0;
+      }
+
+      header nav li:last-child {
+        margin-right: 0;
+      }
+
+      a.btn {
+        color: #fff;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        transition: all 0.2s;
+      }
+
+      a.btn:hover {
+        background: #d73851;
+        border: 1px solid #d73851;
+        color: #fff;
+      }
+
+      .cover {
+        width: 100%;
+        margin-top: 10%;
+        padding: 20px 50px;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-pack: center;
+
+        -webkit-box-align: center;
+        align-items: center;
+      }
+
+      .flex-form input[type="button"] {
+        background: #b12830;
+        border: 1px solid #b12830;
+        color: #fff;
+        padding: 0 30px;
+        cursor: pointer;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        transition: all 0.2s;
+      }
+
+      .flex-form input[type="button"]:hover {
+        background: #d73851;
+        border: 1px solid #d73851;
+      }
+
+      .flex-form {
+        display: -webkit-box;
+        display: flex;
+        z-index: 10;
+        position: relative;
+        width: 500px;
+      }
+
+      .flex-form > * {
+        border: 0;
+        line-height: 50px;
+        font-size: 1rem;
+        border-radius: 0;
+        outline: 0;
+        -webkit-appearance: none;
+      }
+      .loader {
+        border: 16px solid #f3f3f3; 
+        border-top: 16px solid #b12830; 
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin:  0 auto;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      input[type="search"] {
+        flex-basis: 500px;
+      }
+
+      #result {
+        height: auto;
+        width: 500px;
+        margin: 0 auto;
+        box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+        padding: 20px 50px;
+        font-size: 20px;
+        color: #fff;
+        font-family: "Questrial", sans-serif;
+		background-color: #fff;
+		display: none;
+      }
+
+      #logo img {
+        float: left;
+      }
+      #logo #brand {
+        margin-left: 5px;
+        font-size: 30px;
+        font-family: "Nunito", sans-serif;
+        font-weight: 800;
+        margin-top: 8%;
+        float: right;
+      }
+      #content-footer{
+        width: 85%;
+        height: 68%;
+        margin: 0 auto;
+      }
+      footer{
+        margin-top:100px;
+        height:300px;
+        width:100%;
+        background-color: #b12830;
+        overflow:hidden;
+        font-weight: 500;
+      }
+      footer #des{
+        width: 50%;
+        height: 100%;
+        color: #fff;
+        float: left;
+      }
+
+
+      footer #des h1{
+        color: #fff;
+        font-size: 18px;
+        padding: 18px;
+      }
+      footer #des p{
+        padding: 0 18px;
+        font-size: 15px;
+        margin-top: -30px;
+      }
+      footer #sec{
+        height: auto;
+        width: 50%;
+        color: #fff;
+        float: right;
+        
+        
+        
+        
+      }
+      footer #sec h1{
+        color: #fff;
+        font-size: 18px;
+        
+      }
+      footer #sec h1{
+        padding: 18px;
+      }
+      footer #sec ul{
+        padding: 0 18px;
+        margin-top: -30px;
+      }
+      footer #sec ul li {
+        margin-top: 2px;
+      }
+      footer #sec #tools{
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+      footer #sec #join{
+        float: right;
+        height: 100%;
+        width: 50%;
+      }
+      
+      footer #cre{
+        padding-top: 28px;
+        width: 85%;
+        height: 100%;
+        border-top: 0.5px solid #fff;
+        margin: 0 auto;
+
+      }
+      footer #cre p{
+        margin: 0;
+        color: #fff;
+      }
+      @media all and (max-width: 800px) {
+        body {
+          font-size: 0.9rem;
+        }
+
+        .flex-form {
+          width: 100%;
+        }
+
+        input[type="search"] {
+          flex-basis: 100%;
+        }
+
+        .flex-form > * {
+          font-size: 0.9rem;
+        }
+
+        header {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          flex-direction: column;
+          padding: 10px !important;
+        }
+
+        header h2 {
+          margin-bottom: 16px;
+          color: #0a0a0b;
+        }
+
+        h1 {
+          font-size: 3.5rem;
+          font-weight: 1000;
+        }
+
+        .cover {
+          padding: 20px;
+          margin-top: 40%;
+        }
+        #result {
+          width: 90%;
+        }
+        #brand {
+          display: none;
+        }
+        footer{
+          overflow: auto;
+          
+        }
+        #content-footer{
+          height: auto !important;
+        }
+        #des{
+          clear: both;
+         width: 100% !important;
+         
+        }
+        #sec {
+           clear: both; 
+           width: 100% !important;
+        }
+        #sec #tools{
+          clear: both;
+          width: 100% !important;
+
+        }
+        #sec #join{
+          clear: both;
+          width: 100% !important;
+          
+        }
+        #cre{
+          clear: both;
+          width: 80% !important;
+          margin: 0 auto;
+        }
+      }
+
+      @media all and (max-width: 360px) {
+        header nav li {
+          margin: 0 10px;
+        }
+        h1{
+          font-size: 3rem;
+        }
+
+        .flex-form {
+          display: -webkit-box;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          flex-direction: column;
+        }
+
+        input[type="search"] {
+          flex-basis: 0;
+        }
+
+        label {
+          display: none;
+        }
+        #result {
+          width: 90%;
+        }
+        #brand {
+          display: none;
+        }
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div id="logo">
+          <img
+            src="https://cdn.glitch.com/762947c0-937e-4060-8f91-7c6c22c0113f%2Ficon.svg?v=1606298824159"
+            height="83px"
+            alt=""
+          />
+          <span id="brand"><a target="_blank" href="https://www.facebook.com/quohat/">Quohat Team</a></span>
+        </div>
+
+        <nav>
+          <ul>
+            <li>
+              <a target="_blank" href="https://www.facebook.com/quohat/" >Facebook</a>
+            </li>
+            <li>
+              <a  target="_blank" href="https://www.instagram.com/quohat/">Instagram</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.youtube.com/channel/UCK4mAYG_QTyaK1ViZwQrLJw">Youtube</a>
+            </li>
+            <li>
+              <a class="btn" target="_blank" href="https://www.facebook.com/groups/quohat" >Tham gia</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!--noidug-->
+      <div id="noidung">
+        <div class="cover">
+          <h1>Quohat Air</h1>
+          <form class="flex-form">
+            <input style="margin: 0 auto;" onclick="getair();" type="button" value="CLICK HERE" />
+          </form>
+        </div>
+
+        <div id="result">
+          <div id="true">
+			<p>Chỉ số:  <span id="chiso" style="font-size: 32px;">0</span></p>
+			<p>Cảnh Báo:  <span id="canhbao">...</span></p>
+            <p>Thông điệp: <span id="thongdiep">...</span></p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div id="content-footer">
+        <div id="des">
+          <h1><a href="">Ô nhiễm không khí tại Thành phố Hồ Chí Minh</a></h1>
+          <p>bật định vị trước khi sử dụng. Đây là công cụ giúp bạn kiểm tra mức độ ô nhiễm không khí tại vị trí của bạn.</p>
+
+        </div>
+        <div id="sec">
+          <div id="tools">
+            <h1>Tiện ích khác</h1>
+            <ul style="list-style-type:none;">
+              <li>Quohat Flood</li>
+              <li>Quohat Covid-19</li>
+              <li>Quohat Keywords Extractor</li>
+            </ul>
+          </div>
+          <div id="join">
+            <h1>Liên Hệ</h1>
+            <ul style="list-style-type:none;">
+              <li><a target="_blank" href="https://www.facebook.com/groups/quohat">Quohat Space</a></li>
+              <li><a  target="_blank" href="https://www.facebook.com/quohat/">Quohat Fanpge</a></li>
+              <li>Huỳnh Bá Quốc</li>
+              <li>Minh Nhật</li>
+              <li>Kiên Phan</li>
+            </ul>
+          </div>
+
+        </div>
+        </div>
+        <div id="cre">
+          <p>Nguồn dữ liệu: iqair.com</p>
+          <p>Phát triển bởi Quohat Team</p>
+        </div>
+        
+      </footer>
+    </div>
+
+    <script>
+       	function getair() {
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Lỗi");
+            }
+            }
+
+            function showPosition(position) {
+				var lat =  position.coords.latitude;
+				var log =  position.coords.longitude;
+              
+        document.getElementsByClassName("flex-form")[0].innerHTML = `<div class="loader"></div>`;
+				var requestOptions = {
+				method: 'GET',
+				redirect: 'follow'
+				};
+
+				fetch("https://api.airvisual.com/v2/nearest_city?lat="+lat+"&lon="+log+"&key=690eb486-c80d-4a73-8b9c-04a17e358329", requestOptions)
+				.then(response => response.text())
+
+				.then(result =>{
+					result = JSON.parse(result);
+          var air = result.data.current.pollution.aqius;
+          document.getElementsByClassName("loader")[0].style.display = "none";
+          document.getElementById("result").style.display = "block";
+          document.getElementById("chiso").innerHTML = air;
+					if(air <= 50){
+						document.getElementById("result").style.background = "#56ab2f";
+						document.getElementById("canhbao").innerHTML = "An toàn";
+						document.getElementById("thongdiep").innerHTML = "Chất lượng không khí được xem là đạt tiêu chuẩn, và ô nhiễm không khí coi như không hoặc gây rất ít nguy hiểm.";
+					}else if(air >= 51 && air <= 100){
+						document.getElementById("result").style.display = "Vừa phải";
+						document.getElementById("result").style.background = "#f7ff00";
+						document.getElementById("canhbao").innerHTML = "Vừa phải";
+						document.getElementById("thongdiep").innerHTML = "Chất lượng không khí ở mức chấp nhận được; tuy nhiên, một số chất gây ô nhiễm có thể ảnh hưởng tới sức khỏe của một số ít những người nhạy cảm với không khí bị ô nhiễm.";
+					}
+					
+					else if(air >= 101 && air <= 150){
+            document.getElementById("result").style.background = "#f7ff00";
+						document.getElementById("canhbao").innerHTML = "Có hại";
+						document.getElementById("thongdiep").innerHTML = "Chất lượng không khí ở mức chấp nhận được; tuy nhiên, một số chất gây ô nhiễm có thể ảnh hưởng tới sức khỏe của một số ít những người nhạy cảm với không khí bị ô nhiễm.";
+					  document.getElementById("result").style.color = "#000";
+          }else if(air >= 151 && air <= 200){
+						document.getElementById("result").style.background = "#ed8f03";
+						document.getElementById("canhbao").innerHTML ="Không tốt cho người nhạy cảm";
+						document.getElementById("thongdiep").innerHTML = "Mỗi người đều có thể sẽ chịu tác động đến sức khỏe; nhóm người nhạy cảm có thể bị ảnh hưởng nghiêm trọng hơn.";
+					}else if(air >= 201 && air <= 300){
+						document.getElementById("result").style.background = "#f11712";
+						document.getElementById("canhbao").innerHTML = "Rất có hại";
+						document.getElementById("thongdiep").innerHTML = "Rất có hại cho sức khỏe	Cảnh báo nguy hại sức khỏe nghiêm trọng. Đa số mọi người đều bị ảnh hưởng.";
+					}else if(air > 300){
+						document.getElementById("result").style.background = "#aa3a38";
+						document.getElementById("canhbao").innerHTML ="Nguy hiểm";
+						document.getElementById("thongdiep").innerHTML = "Cảnh báo sức khỏe: tất cả mọi người có thể chịu tác động nghiêm trọng đến sức khỏe.";
+					}
+				})
+
+				
+				.catch(error => console.log('error', error));
+
+
+            }
+
+        
+    </script>
+  </body>
+</html>
