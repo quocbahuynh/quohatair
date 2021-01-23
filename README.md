@@ -1,2 +1,2 @@
-# quohatair
-Đô chất lương không khí tại vị trí hiện tại
+# Quohat Air
+Đo chất lương không khí tại chính xác vị trí hiện tại
